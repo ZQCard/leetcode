@@ -6,7 +6,7 @@ import (
 )
 
 func main()  {
-	nums := []int{1, 2, 3, 4, 5}
-	target := 7
-	fmt.Println(problem.TwoSum(nums, target))
+	nums := []int{2,7,11,15}
+	target := 9
+	fmt.Println(problem.TwoSumTwoMap(nums, target))
 }
