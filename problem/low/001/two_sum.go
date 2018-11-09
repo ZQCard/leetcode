@@ -1,7 +1,7 @@
-package problem
+package two_sum
 
 // 56ms
-func TwoSum(nums []int, target int) []int{
+func twoSum(nums []int, target int) []int{
 	var res  []int
 	for key, value := range nums {
 		for k, v := range nums{
@@ -19,7 +19,7 @@ func TwoSum(nums []int, target int) []int{
 }
 
 // 44ms
-func TwoSum2(nums []int, target int) []int  {
+func twoSum2(nums []int, target int) []int  {
 	length := len(nums)
 	for i := 0; i < length; i++ {
 		for j := i + 1; j < length; j++ {
@@ -32,7 +32,7 @@ func TwoSum2(nums []int, target int) []int  {
 }
 
 // 8ms
-func TwoSumTwoMap(nums []int, target int) []int {
+func twoSumTwoMap(nums []int, target int) []int {
 	numMap := make(map[int]int)
 	for i := 0; i < len(nums); i++ {
 		numMap[i] = nums[i]
