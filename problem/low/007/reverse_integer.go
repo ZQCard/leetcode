@@ -5,19 +5,11 @@ import (
 )
 
 func ReverseInteger(x int) int {
-	// 越界范围
-	var upOutOfRange = int((math.Pow(2, 32) / 2) - 1)
-	var downOutOfRange = int(0 - (math.Pow(2, 32) / 2))
 	// 先确定正负数
 	var flag = true
 	if x < 0{
-		if x < downOutOfRange {
-			return 0
-		}
 		flag = false
 		x = -x
-	}else if x > upOutOfRange{
-		return 0
 	}
 
 	// 将数字作为单个元素存储入组 倒序
@@ -46,11 +38,41 @@ func ReverseInteger(x int) int {
 
 	if !flag {
 		res = 0 - res
-		if res < downOutOfRange {
+		if res < math.MinInt32 {
 			return 0
 		}
-	}else if res > upOutOfRange{
+	}else if res > math.MaxInt32{
 		return 0
 	}
 	return int(res)
+}
+
+func ReverseIntegerTwo(x int) int {
+	sign := 1
+
+	// 处理负数
+	if x < 0 {
+		sign = -1
+		x = -1 * x
+	}
+
+	res := 0
+	for x > 0 {
+		// 取出x的末尾
+		temp := x % 10
+		// 放入 res 的开头
+		res = res*10 + temp
+		// x 去除末尾
+		x = x / 10
+	}
+
+	// 还原 x 的符号到 res
+	res = sign * res
+
+	// 处理 res 的溢出问题
+	if res > math.MaxInt32 || res < math.MinInt32 {
+		res = 0
+	}
+
+	return res
 }
