@@ -44,6 +44,4 @@ func TheBest(x int) bool {
 		return true
 	}
 	return false
-
-
 }

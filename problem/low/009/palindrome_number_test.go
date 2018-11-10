@@ -1,6 +1,7 @@
 package palindrome_number
 
 import (
+	. "github.com/smartystreets/goconvey/convey"
 	"testing"
 )
 
