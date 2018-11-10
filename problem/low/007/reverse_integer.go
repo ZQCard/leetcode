@@ -76,3 +76,20 @@ func ReverseIntegerTwo(x int) int {
 
 	return res
 }
+
+func TheBest(x int) int{
+	var digits []int8
+
+	for i := x; i != 0; i = i / 10{
+		digits = append(digits, int8(i % 10))
+	}
+
+	var res int
+	for i := len(digits) - 1; i >= 0; i--{
+		res += int(digits[i]) * int(math.Pow10(len(digits) - i - 1))
+	}
+	if res > math.MaxInt32 || res < math.MinInt32{
+		return 0
+	}
+	return res
+}

@@ -51,3 +51,17 @@ func twoSumTwoMap(nums []int, target int) []int {
 	}
 	return nil
 }
+
+// 4ms
+func TheBest(nums []int, target int) []int {
+	m := make(map[int]int)
+	for i, num := range nums {
+		t, found := m[target - num]
+		if found {
+			return []int{t, i}
+		} else {
+			m[num] = i
+		}
+	}
+	return nil
+}

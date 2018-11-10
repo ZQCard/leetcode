@@ -27,3 +27,23 @@ func palindromeNumber(x int) bool {
 	}
 	return true
 }
+
+func TheBest(x int) bool {
+	if x < 0{
+		return false
+	}
+	x_perm := x
+	x_rev := 0
+	digit := 0
+	for x != 0{
+		digit = x%10
+		x = x/10
+		x_rev = x_rev*10 + digit
+	}
+	if x_perm == x_rev{
+		return true
+	}
+	return false
+
+
+}
