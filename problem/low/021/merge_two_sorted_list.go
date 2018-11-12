@@ -7,7 +7,7 @@ type ListNode struct {
 
 func makeListNode(nums []int) *ListNode {
 	if len(nums) == 0{
-		return &ListNode{}
+		return nil
 	}
 	res := &ListNode{
 		Value: nums[0],
@@ -21,8 +21,8 @@ func makeListNode(nums []int) *ListNode {
 }
 
 func runMergeTwoSortedList() *ListNode {
-	l1 := makeListNode([]int{1, 2, 3})
-	l2 := makeListNode([]int{1, 3, 4})
+	l1 := makeListNode([]int{1, 5, 6})
+	l2 := makeListNode([]int{})
 	return mergeTwoSortedList(l1, l2)
 }
 
@@ -31,20 +31,34 @@ func mergeTwoSortedList(l1 *ListNode, l2 *ListNode) *ListNode {
 	res := make([]int, 0)
 
 	for {
-		// 比较l1和l2当前数的大小,小的放入res，并且指针后移
-		if l1.Value <= l2.Value {
+		// 两者均不为nil
+		if l1 != nil && l2 != nil{
+			valueOne := l1.Value
+			valueTwo := l2.Value
+			if valueOne <= valueTwo {
+				res = append(res, valueOne)
+				l1 = l1.Next
+			} else {
+				res = append(res, valueTwo)
+				l2 = l2.Next
+			}
+		}
+
+		// l1为nil
+		if l1 == nil && l2 != nil{
+			res = append(res, l2.Value)
+			l2 = l2.Next
+		}
+
+		// l2为nil
+		if l2 == nil && l1 != nil{
 			res = append(res, l1.Value)
 			l1 = l1.Next
 		}
 
-		if l2.Value <= l1.Value {
-			res = append(res, l1.Value)
-			l2 = l2.Next
-		}
-
-		if l1.Next == nil && l2.Next == nil {
-			break
+		if l1 == nil && l2 == nil{
+			 break
 		}
 	}
-	return l1
+	return makeListNode(res)
 }
