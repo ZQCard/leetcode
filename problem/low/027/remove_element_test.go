@@ -27,7 +27,7 @@ var params = []para{
 
 func TestRemoveElement(t *testing.T)  {
 	for _, v := range params{
-		Convey("找出最大公共前缀", t, func() {
+		Convey("去除数组元素", t, func() {
 			So(removeElement(v.input, v.val), ShouldEqual, v.output)
 		})
 	}
